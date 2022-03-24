@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+  <head>
+    <title>XITE EPG</title>
+    <meta charset="utf-8">
+    <meta name="description" content="XITE EPG">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!-- add additional header content -->
+    {% block header %}{% endblock %}
+  </head>
+  <body>
+    <!-- test navigation -->
+    {% include 'base_navigation.html' %}
+
+    <!-- test messages -->
+    {% block content %}<p>{{msg}}</p>{% endblock %}
+
+    <!-- add additional body content -->
+    {% block body %}{% endblock %}
+  </body>
+</html>

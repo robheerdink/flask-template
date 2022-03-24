@@ -1,0 +1,39 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}">
+
+{% extends 'base_layout.html' %}
+
+{% block content %}
+<div class="form-wrapper">
+  <h2 class="title">create program</h2>
+    {% for field, errors in form.errors.items() %}
+    {{ ', '.join(errors) }}
+    {% endfor %}
+  <form method="POST" action="{{url_for('create_program')}}">
+      {{ form.csrf_token }}
+      <fieldset class="form-field">
+          {{ form.name.label }}
+          {{ form.name(size=20) }}
+      </fieldset>
+      <fieldset class="form-field">
+          {{ form.title.label }}
+          {{ form.title }}
+      </fieldset>
+      <fieldset class="form-field">
+          {{ form.description.label }}
+          {{ form.description }}
+      </fieldset>
+      <fieldset class="form-field">
+          {{ form.genre.label }}
+          {{ form.genre }}
+      </fieldset>
+      <fieldset class="form-field">
+          {{ form.rating.label }}
+          {{ form.rating }}
+      </fieldset>
+      {{ form.submit }}
+  </form>
+</div>
+{% endblock %}
+
+
+

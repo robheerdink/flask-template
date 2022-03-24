@@ -1,0 +1,11 @@
+fieldset {
+	margin: 10px;
+	background-color: #eec;
+}
+
+label {
+	width: 200px;
+	float: left;
+	font-weight: bold;
+}
+

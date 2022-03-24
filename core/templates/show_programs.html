@@ -1,0 +1,37 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+
+  <div class="container">
+  <h1>{{ title }}</h1>
+    {% for p in programs %}
+    <ul id="p.name">
+      <li>
+        <span class="field-name">id:</span>
+        <span class="field-value">{{ p.id }}</span>
+      </li>
+      <li>
+        <span class="field-name">name:</span>
+        <span class="field-value">{{ p.name }}</span>
+      </li>
+      <li>
+        <span class="field-name">title:</span>
+        <span class="field-value">{{ p.title }}</span>
+      </li>
+      <li>
+        <span class="field-name">description:</span>
+        <span class="field-value">{{ p.description }}</span>
+      </li>
+      <li>
+        <span class="field-name">genre:</span>
+        <span class="field-value">{{ p.genre }}</span>
+      </li>
+      <li>
+        <span class="field-name">rating:</span>
+        <span class="field-value">{{ p.rating }}</span>
+      </li>
+    </ul>
+    {% endfor %}
+  </div>
+
+{% endblock %}

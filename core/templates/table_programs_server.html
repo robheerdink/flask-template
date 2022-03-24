@@ -1,0 +1,49 @@
+{% extends 'base_layout.html' %}
+
+{% block header %}
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.css">
+{% endblock %}
+
+{% block content %}
+  <p> server sided example with ajax</p>
+
+  <table id="data" class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Genre</th>
+        <th>Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      {# NOTE: loop is removed here #}
+      </tbody>
+  </table>
+{% endblock %}
+
+{% block body %}
+  <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.js"></script>
+  <script language="JavaScript">
+   {# note: needd to pass ajax param that points to endpoint of data #}
+
+    $(document).ready(function () {
+      $('#data').DataTable({
+        ajax: '/api/programs_server',
+        serverSide: true,
+        columns: [
+          {data: 'name'},
+          {data: 'title'},
+          {data: 'description'},
+          {data: 'genre', orderable: false, searchable: false},
+          {data: 'rating', orderable: false, searchable: false}
+        ],
+      });
+    });
+  </script>
+{% endblock %}
+
+

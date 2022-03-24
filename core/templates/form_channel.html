@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}">
+
+{% extends 'base_layout.html' %}
+
+{% block content %}
+<div class="form-wrapper">
+  <h2 class="title">create channel</h2>
+    {% for field, errors in form.errors.items() %}
+    {{ ', '.join(errors) }}
+    {% endfor %}
+  <form method="POST" action="{{url_for('create_channel')}}">
+      {{ form.csrf_token }}
+      <fieldset class="form-field">
+          {{ form.name.label }}
+          {{ form.name(size=20) }}
+      </fieldset>
+      <fieldset class="form-field">
+          {{ form.title.label }}
+          {{ form.title }}
+      </fieldset>
+      <fieldset class="form-field">
+          {{ form.timezone.label }}
+          {{ form.timezone }}
+      </fieldset>
+      {{ form.submit }}
+  </form>
+</div>
+{% endblock %}
+
+

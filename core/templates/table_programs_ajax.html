@@ -1,0 +1,55 @@
+{% extends 'base_layout.html' %}
+
+{% block header %}
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.css">
+{% endblock %}
+
+{% block content %}
+  without ajax: <br/>
+  you have to render the entire table to the page before the library takes over and applies its enhancements.
+  If the table is large, Jinja may take a considerable amount of time rendering it, and then the browser may spend some
+  more time downloading all that HTML content, and all of this will happen while the user is waiting for the page to display
+  <br/>
+  The ajax table is better than the basic table because the data is downloaded in the background,
+  after the page has been loaded. But like the basic solution, this method has the problem that the data is downloaded
+  all in a single request,
+
+  <table id="data" class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Genre</th>
+        <th>Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      {# NOTE: loop is removed here #}
+      </tbody>
+  </table>
+{% endblock %}
+
+{% block body %}
+  <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.js"></script>
+  <script language="JavaScript">
+   {# note: needd to pass ajax param that points to endpoint of data #}
+
+    $(document).ready(function () {
+      $('#data').DataTable({
+        ajax: '/api/programs_ajax',
+        columns: [
+          {data: 'name'},
+          {data: 'title'},
+          {data: 'description'},
+          {data: 'genre', orderable: false, searchable: false},
+          {data: 'rating', orderable: false, searchable: false}
+        ],
+      });
+    });
+  </script>
+{% endblock %}
+
+
